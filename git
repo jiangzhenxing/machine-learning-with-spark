@@ -1,8 +1,0 @@
-cmd=$1
-echo $cmd
-if [ '$cmd' = 'push' ]
-then
-  /usr/bin/git push -u spark-learning-python master
-else
-  /usr/bin/git "$@"
-fi
