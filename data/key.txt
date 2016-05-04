@@ -1,0 +1,59 @@
+kerberos帐号
+jiangzhenxing
+121314X@58.com
+
+hdp_58_cluster集群客户机
+hdp_mis_dd@tjtx-101-7.58os.org/10.126.101.7
+hive --hiveconf mapreduce.job.queuename="root.offline.hdp_mis_dd.normal"
+
+wlan:
+用户名：58-office
+密码：On1CGiKQ;IyJ^$56MG;U
+
+测试机：
+10.9.17.55
+用户名/密码：
+dayu/58bidayu
+
+hadoop:
+10.5.11.58
+用户名/密码：
+hadoop/hadoop
+root/dXS,^hX3s!2c)9Lj
+
+10.9.17.55 
+用户名：dayu 这也是个sudo帐户
+密码：58bidayu  
+nginx:安装目录/usr/local/nginx
+
+fvp线上
+10.9.17.59[22]  
+root  0Xam*GvO45qfPF!r
+
+ssh root@10.9.14.7
+
+10.9.17.57苍穹
+账号：nginx_logs   
+密码：nginx_logs123  
+数据目录：/data1/logs/nginx
+
+MYSQL 测试:
+HOST:	10.9.17.55  
+USER:	root  
+PWORD:	fvpfvp
+
+-- 线上MYSQL
+10.9.17.58
+writeuser
+fvpwmeiyoumima
+
+您的SVN账号为: jiangzhenxing
+您的SVN密码为: yGWiphryCQ68
+请您及时登陆 http://svn.58corp.com/cgi-bin/svn.cgi 修改密码。
+
+新机器：10.48.166.92、10.48.166.110、10.48.144.55，需要大家申请kerberos权限，请在http://order.58corp.com/申请权限。
+
+
+Relay00.58corp.com <---->bjtj103-20-65.58os.org
+Relay01.58corp.com<---->bjtj103-20-66.58os.org
+Relay02.58corp.com<---->bjtj103-20-67.58os.org
