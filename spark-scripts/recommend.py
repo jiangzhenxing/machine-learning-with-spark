@@ -52,5 +52,5 @@ sims = model.productFeatures() \
 
 print('similar movie is:')
 for m in sims:
-    print(util.movieInfo(moviesfull[m[0]]))
+    print(util.movieInfo(moviesfull[m[0]]), '\tsimilar is:', m[1])
 
