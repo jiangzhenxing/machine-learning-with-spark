@@ -14,7 +14,7 @@ val rawData = sc.textFile("data/ml-100k/u.data")
 val ratings = rawData.map(_.split("\t").take(3)).map { case Array(user,movie,rating) => Rating(user.toInt,movie.toInt,rating.toDouble) }
 ratings.first
 ratings.cache
-val alsModel = ALS.train(ratings, 50, 7, 0.1)
+val alsModel = ALS.train(ratings, 50, 10, 0.1)
 
 import org.apache.spark.mllib.linalg.Vectors
 val movieFactors = alsModel.productFeatures.map { case (id,factor) => (id,Vectors.dense(factor)) }
@@ -33,4 +33,9 @@ println("user factors mean:\n" + userMatrixSummary.mean)
 println("user factors variance:\n" + userMatrixSummary.variance)
 
 import org.apache.spark.mllib.clustering.KMeans
+val numClusters = 5
+val numIterations = 10
+val numRuns = 3
+val movieClusterModel = KMeans.train(movieVectors, numClusters, numIterations, numRuns)
+val userClusterModel = KMeans.train(userVectors, numClusters, numIterations, numRuns)
 
