@@ -39,3 +39,30 @@ val numRuns = 3
 val movieClusterModel = KMeans.train(movieVectors, numClusters, numIterations, numRuns)
 val userClusterModel = KMeans.train(userVectors, numClusters, numIterations, numRuns)
 
+val predictions = movieClusterModel.predict(movieVectors)
+
+import breeze.linalg._
+import breeze.numerics.pow
+def computeDistance(v1: DenseVector[Double], v2: DenseVector[Double]) = 
+	pow(pow(v1 - v2, 2).sum, 0.5)
+
+val titlesWithFactors = titlesAndGenres.join(movieFactors)
+
+val moviesAssigned = titlesWithFactors.map { 
+	case (id, ((title, genres), vector)) =>
+	val pred = movieClusterModel.predict(vector)
+	val clusterCenter = movieClusterModel.clusterCenters(pred)
+	val dist = computeDistance(DenseVector(clusterCenter.toArray), DenseVector(vector.toArray))
+	(id, title, genres.mkString(" "), pred, dist)
+}
+
+val clusterAssignments = moviesAssigned.groupBy(_._4).collectAsMap
+
+for ( (k,v) <- clusterAssignments.toSeq.sortBy(_._1)) {
+	println(s"Cluster $k:")
+	val m = v.toSeq.sortBy(_._5)
+	m.take(20).foreach(println)
+	println("=========================")
+}
+val movieCost = movieClusterModel.computeCost(movieVectors)
+
